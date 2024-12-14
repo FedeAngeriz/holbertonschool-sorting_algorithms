@@ -2,6 +2,7 @@
 
 /**
  * swap - Algorithm that uses swap two consecutive nodes in the list
+ * @list: pointer to list
  * @node1: pointer to list
  * @node2: pointer to list
  * Return: Void
@@ -37,11 +38,12 @@ void swap(listint_t **list, listint_t *node1, listint_t *node2)
 
 void insertion_sort_list(listint_t **list)
 {
+	listint_t *recorre, *temporal;
+
 	if (!list || !*list || !(*list)->next)
 		return;
 
-	listint_t *recorre = (*list)->next;
-	listint_t *temporal;
+	recorre = (*list)->next;
 
 	while (recorre)
 	{
