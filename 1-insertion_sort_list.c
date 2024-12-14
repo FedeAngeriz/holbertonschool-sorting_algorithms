@@ -9,7 +9,9 @@
 
 void swap(listint_t **list, listint_t *node1, listint_t *node2)
 {
-	if (node1 || node2)
+	if (!node1 || !node2)
+		return;
+	if (node1->next != node2)
 		return;
 
 	if (node1->prev)
@@ -35,7 +37,7 @@ void swap(listint_t **list, listint_t *node1, listint_t *node2)
 
 void insertion_sort_list(listint_t **list)
 {
-	if (list || *list || (*list)->next)
+	if (!list || !*list || !(*list)->next)
 		return;
 
 	listint_t *recorre = (*list)->next;
@@ -43,12 +45,12 @@ void insertion_sort_list(listint_t **list)
 
 	while (recorre)
 	{
-		*temporal = recorre;
+		temporal = recorre;
 		recorre = recorre->next;
 
 		while (temporal->prev && temporal->n < temporal->prev->n)
 		{
-			swap(*list, temporal->prev, temporal);
+			swap(list, temporal->prev, temporal);
 			print_list(*list);
 		}
 	}
